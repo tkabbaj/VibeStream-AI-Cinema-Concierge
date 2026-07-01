@@ -20,7 +20,7 @@ Make sure you have **Python 3.10 or higher** installed on your system. You will 
 ### 2. Clone the Repository
 Open your terminal or command prompt and clone this project:
 ```bash
-git clone [https://github.com/tkabbaj/VibeStream-AI-Cinema-Concierge.git](https://github.com/YOUR_USERNAME/VibeStream-AI-Cinema-Concierge.git)
+git clone [https://github.com/tkabbaj/VibeStream-AI-Cinema-Concierge.git](https://github.com/tkabbaj/VibeStream-AI-Cinema-Concierge.git)
 cd VibeStream-AI-Cinema-Concierge
 ```
 *(Note: If you downloaded the project as a ZIP file, just extract it and open your terminal inside that folder).*
