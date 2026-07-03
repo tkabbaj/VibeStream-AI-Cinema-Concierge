@@ -34,12 +34,46 @@ pip install -r requirements.txt
 ### 4. Launch the Application
 Run the Streamlit server via Python to initialize the micro-frontend:
 ```bash
-python -m streamlit run app.p
+python -m streamlit run app.py
+```
+*Alternatively, if using Docker:*
+```bash
+docker build -t vibestream-app .
+docker run -p 8501:8501 -e GOOGLE_API_KEY="your_key_here" vibestream-app
 ```
 
-## 🚀 How to Use the Agent
+## 🕹️ How to Use the Agent
 
 1. Once the application launches, your default web browser will automatically open a tab at `http://localhost:8501`.
-2. Locate the **Configuration** section in the left sidebar and paste your **Google AI Studio API Key**.
+2. Authentication: 
+   - If a GOOGLE_API_KEY is detected via environment variables, the app will initialize directly. 
+   - If no key is found, a Configuration sidebar will appear. Paste your API key there to unlock the agent.
 3. In the main text area, describe your exact emotional state or aesthetic requirement (e.g., *"An intense 90s thriller space with a rainy neon aesthetic"*).
 4. Click **Find My Match** and watch the agent securely fetch, ground, and display exactly 3 tailored cinema recommendations directly from the live web.
+
+## 🚀 Live Demo
+
+[Check out the live app here](https://vibestream-ai-cinema-concierge-ahscmda53p5q2wdlaxx6tk.streamlit.app/)
+
+## ⚙️ Deployment Guide
+
+This project is built to be flexible and highly portable. Choose the method that best fits your environment:
+
+### Option 1: Streamlit Cloud
+The fastest way to get VibeStream live in under two minutes:
+1. Connect this repository to your [Streamlit Cloud](https://share.streamlit.io/) account.
+2. In the app settings, add GOOGLE_API_KEY to the Secrets section.
+2. Click **Deploy**.
+
+### Option 2: Google Cloud Run
+This project includes a `Dockerfile` for professional, scalable deployments.
+1. Ensure the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install) is installed.
+2. Store your API Key in [Google Secret Manager](https://cloud.google.com/security/products/secret-manager):
+   - Create the secret: `gcloud secrets create GOOGLE_API_KEY --replication-policy="automatic"`
+   - Add the version: `echo -n "YOUR_API_KEY" | gcloud secrets versions add GOOGLE_API_KEY --data-file=-`
+2. Authenticate and set your project:
+   ```bash
+   gcloud auth login
+   gcloud config set project [YOUR_PROJECT_ID]
+   gcloud run deploy vibestream --source . --set-secrets GOOGLE_API_KEY=GOOGLE_API_KEY:latest
+   ```

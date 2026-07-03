@@ -1,0 +1,15 @@
+# Exclude Git files
+.git
+
+# Exclude virtual environments
+.venv
+venv
+env
+
+# Exclude sensitive configuration
+.streamlit/secrets.toml
+
+# Exclude temporary and cache files
+__pycache__
+.DS_Store
+*.pyc

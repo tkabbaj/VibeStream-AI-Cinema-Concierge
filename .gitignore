@@ -1,0 +1,17 @@
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Sensitive configuration files (Never commit these!)
+.streamlit/secrets.toml
+
+# System and OS files
+.DS_Store
+__pycache__/
+*.pyc
+
+# IDE configuration files
+.vscode/
+.idea/
